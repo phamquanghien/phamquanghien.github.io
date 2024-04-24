@@ -40,3 +40,10 @@
 .topic ul li {
   margin-left: 20px; /* Khoảng cách giữa dấu đạn và nội dung */
 }
+
+.text-justify {
+  text-align: justify;
+}
+ul li {
+  text-align: justify;
+}
