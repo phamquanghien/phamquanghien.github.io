@@ -1,0 +1,21 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+
+<header class="w3-container w3-white w3-center w3-padding-64 w3-text-blue">
+    <h2><b>HỘI THẢO KHOA HỌC CẤP QUỐC GIA <br/> KHOA HỌC XÃ HỘI VỚI PHÁT TRIỂN BỀN VỮNG</b></h2>
+    <h3><b>(SOCIAL SCIENCE FOR SUSTAINABLE DEVELOPMENT)</b></h3>
+    <h4>Hà Nội, Việt Nam, ngày 07/11/2024</h4>
+</header>
+<div>
+@{ 
+    Html.RenderPartial("_About");
+    Html.RenderPartial("_DVTC");
+    Html.RenderPartial("_CVDNC");
+    Html.RenderPartial("_BanToChuc");
+    Html.RenderPartial("_BanKhoaHoc");
+    Html.RenderPartial("_BanBienTap");
+}
+</div>
+<br/>
+<br/>
