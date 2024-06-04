@@ -1,63 +1,80 @@
 ﻿<!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - SSSD</title>
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/w3.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/css/user-defind.css" asp-append-version="true" />
-    <link rel="stylesheet" href="~/SSSD.styles.css" asp-append-version="true" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- Google Fonts -->
+    <link
+        href="https://fonts.googleapis.com/css?family=Open+Sans:300,300i,400,400i,600,600i,700,700i|Jost:300,300i,400,400i,500,500i,600,600i,700,700i|Poppins:300,300i,400,400i,500,500i,600,600i,700,700i"
+        rel="stylesheet">
+    <link href="~/css/w3.css" rel="stylesheet">
+    <link href="~/css/user-defind.css" rel="stylesheet">
+    <!-- Vendor CSS Files -->
+    <link href="~/assets/vendor/aos/aos.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/bootstrap-icons/bootstrap-icons.css" rel="stylesheet">
+    <link href="~/assets/vendor/boxicons/css/boxicons.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/glightbox/css/glightbox.min.css" rel="stylesheet">
+    <link href="~/assets/vendor/remixicon/remixicon.css" rel="stylesheet">
+    <link href="~/assets/vendor/swiper/swiper-bundle.min.css" rel="stylesheet">
+    <link href="~/assets/css/style.css" rel="stylesheet">
 </head>
+
 <body>
-    <header>
-        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3 w3-top">
-            <div class="container-fluid">
-                <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index"><b><i class="fa fa-home"></i>Home</b></a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target=".navbar-collapse" aria-controls="navbarSupportedContent"
-                        aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
-                    <ul class="navbar-nav flex-grow-1">
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#about">Giới thiệu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#DVTC">Đơn vị tổ chức</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#CVDNC">Các vấn đề nghiên cứu</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#BanToChuc">Ban tổ chức</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#BanKhoaHoc">Ban khoa học</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#BanBienTap">Ban biên tập</a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </nav>
+    <header id="header" class="fixed-top">
+        <div class="container d-flex align-items-center">
+
+            <h1 class="logo me-auto"><a href="#hero"><img src="images/Logo.png"
+                        class="w3-border w3-white w3-padding w3-round-xxlarge" alt="SSSD2024"></a>
+            </h1>
+
+            <nav id="navbar" class="navbar">
+                <ul>
+                    <li><a class="nav-link scrollto" href="#about">Giới thiệu</a></li>
+                    <li><a class="nav-link scrollto" href="#CVDNC">Hướng nghiên cứu</a></li>
+                    <li><a class="nav-link scrollto" href="#ThoiGian">Mốc thời gian</a></li>
+                    <li><a class="nav-link scrollto" href="#ThongBao">Thông báo</a></li>
+                    <li class="dropdown var-link"><a href="#BanToChuc"><span>Nhân sự</span><i
+                                class="bi bi-chevron-down"></i></a>
+                        <ul>
+                            <li><a href="#BanToChuc">Ban tổ chức</a></li>
+                            <li><a href="#BanKhoaHoc">Ban Khoa học và Phản biện</a></li>
+                            <li><a href="#BanBienTap">Ban Biên tập và Thư ký</a></li>
+                        </ul>
+                    </li>
+                    <li><a class="nav-link scrollto" href="#TheLeGuiBai">Thể lệ</a></li>
+                    <li><a class="nav-link scrollto" href="#contact">Liên hệ</a></li>
+                </ul>
+                <i class="bi bi-list mobile-nav-toggle"></i>
+            </nav><!-- .navbar -->
+        </div>
     </header>
-    <div class="w3-margin-bottom">
-        <main role="main">
-            @RenderBody()
-        </main>
+    <div>
+        @RenderBody()
     </div>
-    <footer class="border-top footer text-muted w3-center">
+    <footer class="border-top footer text-muted w3-center w3-padding">
         <div class="container">
-            &copy; 2024 - SSSD - <a href="http://pol.humg.edu.vn/vi/">Faculty Of Political Studies - HUMG</a>
+            &copy; <a href="http://pol.humg.edu.vn/vi/">Faculty Of Political Studies HUMG</a> - SSSD 2024
         </div>
     </footer>
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
     <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/user-defind.js" asp-append-version="true"></script>
+
+    <script src="~/assets/vendor/aos/aos.js"></script>
+    <script src="~/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/assets/vendor/glightbox/js/glightbox.min.js"></script>
+    <script src="~/assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
+    <script src="~/assets/vendor/swiper/swiper-bundle.min.js"></script>
+    <script src="~/assets/vendor/waypoints/noframework.waypoints.js"></script>
+    <script src="~/assets/vendor/php-email-form/validate.js"></script>
+
+    <!-- Template Main JS File -->
+    <script src="assets/js/main.js"></script>
     @await RenderSectionAsync("Scripts", required: false)
 </body>
+
 </html>

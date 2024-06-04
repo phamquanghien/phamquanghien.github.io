@@ -1,21 +1,34 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+  ViewData["Title"] = "Home Page";
 }
-
-<header class="w3-container w3-white w3-center w3-padding-64 w3-text-blue">
-    <h2><b>HỘI THẢO KHOA HỌC CẤP QUỐC GIA <br/> KHOA HỌC XÃ HỘI VỚI PHÁT TRIỂN BỀN VỮNG</b></h2>
-    <h3><b>(SOCIAL SCIENCE FOR SUSTAINABLE DEVELOPMENT)</b></h3>
-    <h4>Hà Nội, Việt Nam, ngày 07/11/2024</h4>
-</header>
-<div>
-@{ 
+<section id="hero" class="d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 d-flex flex-column justify-content-center pt-4 pt-lg-0 order-2 order-lg-1 w3-center"
+        data-aos="fade-up" data-aos-delay="200">
+        <h1>HỘI THẢO KHOA HỌC CẤP QUỐC GIA <br />KHOA HỌC XÃ HỘI VỚI PHÁT TRIỂN BỀN VỮNG</h1>
+        <h2>(SOCIAL SCIENCE FOR SUSTAINABLE DEVELOPMENT)</h2>
+        <h4 class="w3-text-aqua">Hà Nội, Việt Nam, ngày 07/11/2024</h4>
+      </div>
+    </div>
+  </div>
+</section>
+<main id="main">
+  @{
     Html.RenderPartial("_About");
-    Html.RenderPartial("_DVTC");
-    Html.RenderPartial("_CVDNC");
+    Html.RenderPartial("_CacVanDeNghienCuu");
+    Html.RenderPartial("_ThoiGian");
+    Html.RenderPartial("_ThongBao");
     Html.RenderPartial("_BanToChuc");
     Html.RenderPartial("_BanKhoaHoc");
     Html.RenderPartial("_BanBienTap");
-}
-</div>
-<br/>
-<br/>
+    Html.RenderPartial("_TheLeGuiBai");
+    Html.RenderPartial("_Contact");
+    @*
+  Html.RenderPartial("_CVDNC");
+  Html.RenderPartial("_BanToChuc");
+  Html.RenderPartial("_BanKhoaHoc");
+  Html.RenderPartial("_BanBienTap");
+  Html.RenderPartial("_Contact"); *@
+  }
+</main>
