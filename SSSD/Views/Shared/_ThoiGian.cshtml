@@ -1,11 +1,39 @@
 <section id="ThoiGian" class="skills">
   <div class="container" data-aos="fade-up">
-    <div class="row">
+    <div class="row w3-margin-bottom w3-hide-medium w3-hide-small">
+      <div class="pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+        <h3 class="w3-center w3-margin-bottom">CÁC MỐC THỜI GIAN QUAN TRỌNG</h3>
+        <div class="timeline" id="timeline">
+          <div class="timeline-item" data-date="30/06/2024">
+            <div class="timeline-time">30/06/2024</div>
+            <div class="days-left" id="days-left-1"></div>
+          </div>
+          <div class="timeline-item" data-date="31/08/2024">
+            <div class="timeline-time">31/08/2024</div>
+            <div class="days-left" id="days-left-2"></div>
+          </div>
+          <div class="timeline-item" data-date="01/10/2024">
+            <div class="timeline-time">01/10/2024</div>
+            <div class="days-left" id="days-left-3"></div>
+          </div>
+          <div class="timeline-item" data-date="28/10/2024">
+            <div class="timeline-time">28/10/2024</div>
+            <div class="days-left" id="days-left-4"></div>
+          </div>
+          <div class="timeline-item" data-date="07/11/2024">
+            <div class="timeline-time">07/11/2024</div>
+            <div class="days-left" id="days-left-5"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br>
+    <div class="row w3-margin-top">
       <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
         <img src="assets/img/skills.png" class="img-fluid" alt="">
       </div>
       <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
-        <h3>CÁC MỐC THỜI GIAN QUAN TRỌNG</h3>
+        @* <h3>CÁC MỐC THỜI GIAN QUAN TRỌNG</h3> *@
         <div class="skills-content">
           <div class="progress">
             <span class="skill">30/06/2024: Hoàn thành đăng ký tóm tắt tham luận</span>
@@ -47,3 +75,57 @@
     </div>
   </div>
 </section>
+
+
+<section id="ThoiGian" class="skills">
+  <div class="container" data-aos="fade-up">
+
+  </div>
+</section>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const today = new Date();
+    const timeline = document.getElementById('timeline');
+    const timelineItems = Array.from(timeline.getElementsByClassName('timeline-item'));
+
+    // Định dạng ngày hiện tại
+    const formattedToday = today.toLocaleDateString('en-GB'); // Định dạng DD/MM/YYYY
+
+    // Thêm phần tử ngày hiện tại
+    const currentTimelineItem = document.createElement('div');
+    currentTimelineItem.className = 'timeline-item';
+    currentTimelineItem.setAttribute('data-date', formattedToday);
+    currentTimelineItem.innerHTML = `
+    <div class="timeline-time">${formattedToday}</div>
+    <div class="days-left w3-text-blue" id="days-left-current"></div>
+  `;
+
+    timelineItems.push(currentTimelineItem);
+
+    timelineItems.forEach(item => {
+      const dateText = item.getAttribute('data-date');
+      const parts = dateText.split('/');
+      const targetDate = new Date(parts[2], parts[1] - 1, parts[0]);
+      const diffTime = targetDate - today;
+      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+      if (diffDays > 0) {
+        item.querySelector('.days-left').textContent = `Còn ${diffDays} ngày`;
+      } else if (diffDays === 0) {
+        item.querySelector('.days-left').textContent = 'Hôm nay';
+      } else {
+        item.querySelector('.days-left').textContent = `${Math.abs(diffDays)} ngày trước`;
+      }
+
+      item.dataset.timestamp = targetDate.getTime();
+    });
+
+    // Sắp xếp các phần tử dựa trên timestamp
+    timelineItems.sort((a, b) => a.dataset.timestamp - b.dataset.timestamp);
+
+    // Xóa các phần tử cũ và thêm các phần tử đã sắp xếp vào lại
+    timeline.innerHTML = '';
+    timelineItems.forEach(item => timeline.appendChild(item));
+  });
+
+</script>
