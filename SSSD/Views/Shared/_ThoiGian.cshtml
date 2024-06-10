@@ -1,4 +1,4 @@
-<section id="ThoiGian" class="skills">
+<section id="ThoiGian" class="skills w3-hide-medium w3-hide-small">
   <div class="container" data-aos="fade-up">
     <div class="row w3-margin-bottom w3-hide-medium w3-hide-small">
       <div class="pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
@@ -27,36 +27,37 @@
         </div>
       </div>
     </div>
-    <br>
-    <div class="row w3-margin-top">
+    <br class="w3-hide-medium w3-hide-small">
+    <div class="row w3-margin-top w3-hide-medium w3-hide-small">
       <div class="col-lg-6 d-flex align-items-center" data-aos="fade-right" data-aos-delay="100">
-        <img src="assets/img/skills.png" class="img-fluid" alt="">
+        @* <img src="assets/img/skills.png" class="img-fluid" alt=""> *@
+        <img src="images/time-line3.jpg" class="img-fluid" alt="">
       </div>
-      <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+      <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100" style="margin: auto 0;">
         @* <h3>CÁC MỐC THỜI GIAN QUAN TRỌNG</h3> *@
         <div class="skills-content">
-          <div class="progress">
+          <div class="progress w3-margin-bottom">
             <span class="skill">30/06/2024: Hoàn thành đăng ký tóm tắt tham luận</span>
             <div class="progress-bar-wrap">
               <div class="progress-bar" role="progressbar" aria-valuenow="10" aria-valuemin="0" aria-valuemax="90">
               </div>
             </div>
           </div>
-          <div class="progress">
+          <div class="progress w3-margin-bottom">
             <span class="skill">31/08/2024: Hoàn thành nộp báo cáo toàn văn</span>
             <div class="progress-bar-wrap">
               <div class="progress-bar" role="progressbar" aria-valuenow="50" aria-valuemin="0" aria-valuemax="50">
               </div>
             </div>
           </div>
-          <div class="progress">
+          <div class="progress w3-margin-bottom">
             <span class="skill">01/10/2024: Nhận báo cáo toàn văn sau khi đã sửa theo góp ý của phản biện</span>
             <div class="progress-bar-wrap">
               <div class="progress-bar" role="progressbar" aria-valuenow="80" aria-valuemin="0" aria-valuemax="20">
               </div>
             </div>
           </div>
-          <div class="progress">
+          <div class="progress w3-margin-bottom">
             <span class="skill">28/10/2024: Hoàn thành đăng ký tham dự hội nghị</span>
             <div class="progress-bar-wrap">
               <div class="progress-bar" role="progressbar" aria-valuenow="90" aria-valuemin="0" aria-valuemax="10">
@@ -76,56 +77,105 @@
   </div>
 </section>
 
-
-<section id="ThoiGian" class="skills">
+<section id="ThoiGian" class="skills w3-hide-large">
   <div class="container" data-aos="fade-up">
-
+    <div class="row">
+      <div class="pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
+        <h3 class="w3-center w3-margin-bottom">CÁC MỐC THỜI GIAN QUAN TRỌNG</h3>
+      </div>
+      <div id="content">
+        <ul class="ver-time-line">
+          <li class="event" data-date="30/06/2024">
+            <h3>Hoàn thành đăng ký tóm tắt tham luận</h3>
+            <p class="days-left ver-days-left" id="days-left-1"></p>
+          </li>
+          <li class="event" data-date="31/08/2024">
+            <h3>Hoàn thành nộp báo cáo toàn văn</h3>
+            <p class="days-left ver-days-left" id="days-left-2"></p>
+          </li>
+          <li class="event" data-date="01/10/2024">
+            <h3>Nhận báo cáo toàn văn sau khi đã sửa theo góp ý của phản biện</h3>
+            <p class="days-left ver-days-left" id="days-left-3"></p>
+          </li>
+          <li class="event" data-date="28/10/2024">
+            <h3>Hoàn thành đăng ký tham dự hội nghị</h3>
+            <p class="days-left ver-days-left" id="days-left-4"></p>
+          </li>
+          <li class="event" data-date="07/11/2024">
+            <h3>Tổ chức hội nghị</h3>
+            <p class="days-left ver-days-left" id="days-left-5"></p>
+          </li>
+        </ul>
+      </div>
+    </div>
   </div>
 </section>
 <script>
   document.addEventListener('DOMContentLoaded', function () {
     const today = new Date();
     const timeline = document.getElementById('timeline');
+    const verTimeline = document.querySelector('.ver-time-line');
     const timelineItems = Array.from(timeline.getElementsByClassName('timeline-item'));
+    const verTimelineItems = Array.from(verTimeline.getElementsByClassName('event'));
 
     // Định dạng ngày hiện tại
     const formattedToday = today.toLocaleDateString('en-GB'); // Định dạng DD/MM/YYYY
 
-    // Thêm phần tử ngày hiện tại
+    // Thêm phần tử ngày hiện tại vào timeline ngang
     const currentTimelineItem = document.createElement('div');
     currentTimelineItem.className = 'timeline-item';
     currentTimelineItem.setAttribute('data-date', formattedToday);
     currentTimelineItem.innerHTML = `
-    <div class="timeline-time">${formattedToday}</div>
-    <div class="days-left w3-text-blue" id="days-left-current"></div>
-  `;
+      <div class="timeline-time">${formattedToday}</div>
+      <div class="days-left w3-text-blue" id="days-left-current"></div>
+    `;
 
     timelineItems.push(currentTimelineItem);
 
-    timelineItems.forEach(item => {
-      const dateText = item.getAttribute('data-date');
-      const parts = dateText.split('/');
-      const targetDate = new Date(parts[2], parts[1] - 1, parts[0]);
-      const diffTime = targetDate - today;
-      const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+    // Thêm phần tử ngày hiện tại vào timeline dọc
+    const currentVerTimelineItem = document.createElement('li');
+    currentVerTimelineItem.className = 'event';
+    currentVerTimelineItem.setAttribute('data-date', formattedToday);
+    currentVerTimelineItem.innerHTML = `
+      <h3 class="days-left ver-days-left w3-text-blue" id="days-left-5"></h3>
+    `;
 
-      if (diffDays > 0) {
-        item.querySelector('.days-left').textContent = `Còn ${diffDays} ngày`;
-      } else if (diffDays === 0) {
-        item.querySelector('.days-left').textContent = 'Hôm nay';
-      } else {
-        item.querySelector('.days-left').textContent = `${Math.abs(diffDays)} ngày trước`;
-      }
+    verTimelineItems.push(currentVerTimelineItem);
 
-      item.dataset.timestamp = targetDate.getTime();
-    });
+    // Cập nhật days-left cho cả hai timeline
+    function updateDaysLeft(items, today) {
+      items.forEach(item => {
+        const dateText = item.getAttribute('data-date');
+        const parts = dateText.split('/');
+        const targetDate = new Date(parts[2], parts[1] - 1, parts[0]);
+        const diffTime = targetDate - today;
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+
+        const daysLeftElement = item.querySelector('.days-left');
+        if (daysLeftElement) {
+          if (diffDays > 0) {
+            daysLeftElement.textContent = `Còn ${diffDays} ngày`;
+          } else if (diffDays === 0) {
+            daysLeftElement.textContent = 'Hôm nay';
+          }
+        }
+
+        item.dataset.timestamp = targetDate.getTime();
+      });
+    }
+
+    updateDaysLeft(timelineItems, today);
+    updateDaysLeft(verTimelineItems, today);
 
     // Sắp xếp các phần tử dựa trên timestamp
     timelineItems.sort((a, b) => a.dataset.timestamp - b.dataset.timestamp);
+    verTimelineItems.sort((a, b) => a.dataset.timestamp - b.dataset.timestamp);
 
     // Xóa các phần tử cũ và thêm các phần tử đã sắp xếp vào lại
     timeline.innerHTML = '';
     timelineItems.forEach(item => timeline.appendChild(item));
-  });
 
+    verTimeline.innerHTML = '';
+    verTimelineItems.forEach(item => verTimeline.appendChild(item));
+  });
 </script>
